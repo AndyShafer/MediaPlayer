@@ -1,0 +1,44 @@
+This document will provide brief guidelines for utilizing this repo. By following the processes outlined below, we will be able to:
+
+1) Develop features/functionality independently of other features
+2) Ensure that the master branch contains only functional, tested code
+3) Isolate issues with new fatures 
+4) Reliably use the master branch as a source of stable code in the event of releases, catastrophic failures, or deprecations.
+
+
+For each story (or grouping of stories) that creates a new feature or functionality, contributors should:
+
+1) Create a new branch off of the master branch
+	git checkout master //Ensure that you are currently in the master branch
+	git checkout -b branch_name //Where branch_name is the name of the new branch -- should be intuitively related to the feature being built
+	git checkout branch_name //Set your current branch to be the new one
+
+2) Create your code, test it, develop more, etc.
+	Be careful to ensure that you are always working out of the proper branch.
+	Running git checkout branch_name at the beginning of each development session is a good habit to get into
+
+3) Commit your code to your local branch
+	git add file_names //Add new or updated files to the commit
+	git commit -m"Comments about this commit"
+	git push //Pushes all changes to your current branch
+	
+	Work in this branch until the feature or functionality is complete. Only continue onto the next step once you're confident the code is stable and ready for release
+
+4) Merge master into your current branch
+	git pull origin master //Pulls the remote master branch into your current working branch
+
+5) Resolve all merge conflicts from the previous step
+
+6) Test your code again, ensure that it still functions as expected
+
+7) Merge your branch into the local master branch
+	git checkout master //Set your current branch to be the local master branch
+	git merge branch_name //Merge your feature branch into the local master branch
+
+8) Resolve any merge conflicts from the previous step
+	There shouldn't be any merge conflicts from the previous step due to the initial merge in step 4
+
+9) Test your code again, ensuring that it still functions as desired
+
+10) Push your code to the remote master branch
+	git push origin master //Run this command from your local master branch, pushes your new code to the master branch
